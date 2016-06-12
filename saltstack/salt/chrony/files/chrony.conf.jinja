@@ -1,0 +1,29 @@
+# managed by SaltStack
+{%- set config = salt['pillar.get']('chrony:lookup', {}) -%}
+{%- set vals = {
+  'bindcmdaddress': config.get('bindcmdaddress','127.0.0.1'),
+  'custom': config.get('custom', ''),
+}%}
+
+### chrony conf
+server 0.centos.pool.ntp.org iburst                                              
+server 1.centos.pool.ntp.org iburst                                              
+server 2.centos.pool.ntp.org iburst                                              
+server 3.centos.pool.ntp.org iburst                                              
+stratumweight 0                                                                  
+driftfile /var/lib/chrony/drift                                                  
+rtcsync                                                                          
+makestep 10 3                                                                    
+bindcmdaddress {{ vals.bindcmdaddress }}
+bindcmdaddress ::1                                                               
+keyfile /etc/chrony.keys                                                         
+commandkey 1                                                                     
+generatecommandkey                                                               
+noclientlog                                                                      
+logchange 0.5                                                                    
+logdir /var/log/chrony 
+
+{% if vals.custom -%}                                                                                                                                          
+{{ vals.custom }}                                               
+{%- endif %}
+

@@ -1,0 +1,6 @@
+# salt-ssh roster file
+
+testserver:
+  host: 192.168.33.75
+  priv: /home/vagrant/.ssh/id_rsa
+

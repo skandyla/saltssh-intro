@@ -1,0 +1,10 @@
+state_verbose: False
+state_output: mixed
+file_roots:
+  base:
+    - /srv/saltstack/salt
+pillar_roots:
+  base:
+    - /srv/saltstack/pillar
+
+

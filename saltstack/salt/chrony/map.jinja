@@ -1,0 +1,13 @@
+# chrony settings
+{% set chrony = salt['grains.filter_by']({
+  'RedHat': {
+    'pkg': 'chrony',
+    'conf': '/etc/chrony.conf', 
+    'service': 'chronyd',
+  },
+  'Debian': {
+    'pkg': 'chrony',
+    'conf': '/etc/chrony/chrony.conf', 
+    'service': 'chrony',
+  },
+}, merge=salt['pillar.get']('chrony:lookup')) %}
