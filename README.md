@@ -4,7 +4,7 @@ Example repository for salt-ssh introduction
 ### Requirements:
 Vagrant and Virtualbox  
 
-### Use
+### Usage:
 Execute:  
 `vagrant up`  
 
@@ -22,3 +22,4 @@ root@saltsshbox:~# salt-ssh -i '*' test.ping
 testserver:
     True
 ```
+
